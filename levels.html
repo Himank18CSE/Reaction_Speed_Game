@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Level - Reaction Speed Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="levelsScreen" class="menu-screen active">
+            <h2>🎯 Select Difficulty</h2>
+            <div class="levels-grid">
+                <!-- Easy Level -->
+                <div class="level-card unlocked" data-level="easy">
+                    <div class="level-icon">🎯</div>
+                    <h3>Easy</h3>
+                    <p>Perfect for beginners</p>
+                    <div class="level-details">
+                        <span>Target Size: Large</span>
+                        <span>Speed: Normal</span>
+                        <span>Time: 30s</span>
+                    </div>
+                    <div class="level-stats">
+                        <span class="best-score">Best: <span class="value">0</span></span>
+                        <div class="unlock-status">Unlocked</div>
+                    </div>
+                </div>
+
+                <!-- Medium Level -->
+                <div class="level-card" data-level="medium">
+                    <div class="level-icon">⚡</div>
+                    <h3>Medium</h3>
+                    <p>For experienced players</p>
+                    <div class="level-details">
+                        <span>Target Size: Medium</span>
+                        <span>Speed: Fast</span>
+                        <span>Time: 25s</span>
+                    </div>
+                    <div class="level-stats">
+                        <span class="best-score">Best: <span class="value">0</span></span>
+                        <div class="unlock-status">Score 50 in Easy</div>
+                    </div>
+                </div>
+
+                <!-- Hard Level -->
+                <div class="level-card" data-level="hard">
+                    <div class="level-icon">🔥</div>
+                    <h3>Hard</h3>
+                    <p>Ultimate challenge</p>
+                    <div class="level-details">
+                        <span>Target Size: Small</span>
+                        <span>Speed: Very Fast</span>
+                        <span>Time: 20s</span>
+                    </div>
+                    <div class="level-stats">
+                        <span class="best-score">Best: <span class="value">0</span></span>
+                        <div class="unlock-status">Score 100 in Medium</div>
+                    </div>
+                </div>
+            </div>
+            <a href="index.html" class="menu-button back-button">← Back to Menu</a>
+        </div>
+    </div>
+    <script src="levels.js"></script>
+</body>
+</html> 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Game - Reaction Speed Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Game Screen -->
+        <div id="gameScreen" class="game-screen active">
+            <div class="top-bar">
+                <a href="levels.html" class="back-button">← Levels</a>
+                <div class="level-info">
+                    <span class="level-name">Level: <span id="currentLevel">Basic</span></span>
+                    <span class="player-info">Player: <span id="playerName">Guest</span></span>
+                </div>
+            </div>
+            
+            <div class="game-stats">
+                <div class="score">Score: <span id="currentScore">0</span></div>
+                <div class="high-score">Best: <span id="highScore">0</span></div>
+                <div class="time">Time: <span id="timeLeft">30</span>s</div>
+            </div>
+
+            <div class="game-area">
+                <div id="target" class="target">🎯</div>
+                <div id="ghostTarget" class="target ghost">👻</div>
+                <div id="obstacles" class="obstacles"></div>
+                <button id="startButton" class="start-button">Start Game</button>
+            </div>
+
+            <div class="game-controls">
+                <div class="stats">
+                    <div>Reaction Time: <span id="reactionTime">0</span>ms</div>
+                    <div>Avg Time: <span id="averageTime">0</span>ms</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Celebration Overlay -->
+        <div id="celebration" class="celebration">
+            <div class="celebration-content">
+                <div class="trophy">🏆</div>
+                <h2>NEW HIGH SCORE!</h2>
+                <div class="score-display">
+                    <span id="celebrationScore">0</span>
+                    <div class="celebration-emojis">
+                        🎉 🎊 ⭐ 🌟 🎯 🎮
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="confetti"></div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="tapSound" src="./sounds/tap.wav" preload="auto"></audio>
+    <audio id="celebrationSound" src="./sounds/win.wav" preload="auto"></audio>
+    <audio id="gameCompleteSound" src="./sounds/win.wav" preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+</html> 

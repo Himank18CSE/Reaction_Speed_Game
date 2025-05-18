@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Speed Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main Menu -->
+        <div id="mainMenu" class="screen active">
+            <h1>Reaction Speed Game</h1>
+            <div class="menu-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Games Played:</span>
+                    <span id="menuGamesPlayed">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Best Time:</span>
+                    <span id="menuBestTime">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Average Time:</span>
+                    <span id="menuAvgTime">-</span>
+                </div>
+            </div>
+            <div class="menu-buttons">
+                <a href="levels.html" class="menu-button">Play Game</a>
+                <a href="highscores.html" class="menu-button">High Scores</a>
+                <a href="account.html" class="menu-button">Account</a>
+            </div>
+        </div>
+
+        <!-- Levels Screen -->
+        <div id="levelsScreen" class="menu-screen">
+            <h2>Select Level</h2>
+            <div class="levels-grid">
+                <!-- Level 1: Basic -->
+                <div class="level-card unlocked" data-level="1">
+                    <div class="level-icon">🎯</div>
+                    <h3>Basic</h3>
+                    <p>Classic reaction test</p>
+                    <div class="level-stats">
+                        <span class="best-time">Best: <span class="value">0</span>ms</span>
+                        <span class="stars">⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- Level 2: Speed Rush -->
+                <div class="level-card" data-level="2">
+                    <div class="level-icon">⚡</div>
+                    <h3>Speed Rush</h3>
+                    <p>Faster targets, higher scores</p>
+                    <div class="level-stats">
+                        <span class="unlock-req">Score 50 in Basic</span>
+                        <span class="stars">⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- Level 3: Color Match -->
+                <div class="level-card" data-level="3">
+                    <div class="level-icon">🎨</div>
+                    <h3>Color Match</h3>
+                    <p>Match the color pattern</p>
+                    <div class="level-stats">
+                        <span class="unlock-req">Complete Speed Rush</span>
+                        <span class="stars">⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- Level 4: Maze Runner -->
+                <div class="level-card" data-level="4">
+                    <div class="level-icon">🌀</div>
+                    <h3>Maze Runner</h3>
+                    <p>Navigate through obstacles</p>
+                    <div class="level-stats">
+                        <span class="unlock-req">Complete Color Match</span>
+                        <span class="stars">⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- Level 5: Time Warp -->
+                <div class="level-card" data-level="5">
+                    <div class="level-icon">⏰</div>
+                    <h3>Time Warp</h3>
+                    <p>Variable speed challenge</p>
+                    <div class="level-stats">
+                        <span class="unlock-req">Complete Maze Runner</span>
+                        <span class="stars">⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- Level 6: Master Challenge -->
+                <div class="level-card" data-level="6">
+                    <div class="level-icon">👑</div>
+                    <h3>Master Challenge</h3>
+                    <p>Ultimate reaction test</p>
+                    <div class="level-stats">
+                        <span class="unlock-req">Complete All Levels</span>
+                        <span class="stars">⭐⭐⭐</span>
+                    </div>
+                </div>
+            </div>
+            <button class="menu-button back-button">← Back</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="gameScreen" class="game-screen">
+            <div class="top-bar">
+                <button id="backToMenu" class="back-button">← Menu</button>
+                <div class="level-info">
+                    <span class="level-name">Level: <span id="currentLevel">Basic</span></span>
+                    <span class="player-info">Player: <span id="playerName">Guest</span></span>
+                </div>
+            </div>
+            
+            <div class="game-stats">
+                <div class="score">Score: <span id="currentScore">0</span></div>
+                <div class="high-score">Best: <span id="highScore">0</span></div>
+                <div class="time">Time: <span id="timeLeft">30</span>s</div>
+            </div>
+
+            <div class="game-area">
+                <div id="target" class="target">🎯</div>
+                <div id="ghostTarget" class="target ghost">👻</div>
+                <div id="obstacles" class="obstacles"></div>
+                <button id="startButton" class="start-button">Start Game</button>
+            </div>
+
+            <div class="game-controls">
+                <div class="stats">
+                    <div>Reaction Time: <span id="reactionTime">0</span>ms</div>
+                    <div>Avg Time: <span id="averageTime">0</span>ms</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- High Scores Screen -->
+        <div id="highScoresScreen" class="menu-screen">
+            <h2>🏆 High Scores</h2>
+            <div id="highScoresList" class="high-scores-list">
+                <!-- High scores will be populated here -->
+            </div>
+            <button class="menu-button back-button">← Back</button>
+        </div>
+
+        <!-- Account Screen -->
+        <div id="accountScreen" class="menu-screen">
+            <h2>👤 Account</h2>
+            <div class="account-form">
+                <div id="loginForm" class="form-group">
+                    <input type="text" id="username" placeholder="Enter username" class="input-field">
+                    <button id="saveUsername" class="menu-button">Save Username</button>
+                </div>
+                <div class="player-stats">
+                    <h3>Your Stats</h3>
+                    <p>Games Played: <span id="gamesPlayed">0</span></p>
+                    <p>Best Score: <span id="personalBest">0</span></p>
+                    <p>Average Score: <span id="averageScore">0</span></p>
+                    <h3>Level Progress</h3>
+                    <div id="levelProgress" class="level-progress">
+                    </div>
+                </div>
+            </div>
+            <button class="menu-button back-button">← Back</button>
+        </div>
+
+        <!-- Celebration Overlay -->
+        <div id="celebration" class="celebration">
+            <div class="celebration-content">
+                <div class="trophy">🏆</div>
+                <h2>NEW HIGH SCORE!</h2>
+                <div class="score-display">
+                    <span id="celebrationScore">0</span>
+                    <div class="celebration-emojis">
+                        🎉 🎊 ⭐ 🌟 🎯 🎮
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level Complete Overlay -->
+        <div id="levelComplete" class="celebration">
+            <div class="celebration-content">
+                <div class="level-complete-icon">🌟</div>
+                <h2>LEVEL COMPLETE!</h2>
+                <div class="level-rewards">
+                    <div class="stars-earned">⭐⭐⭐</div>
+                    <div class="unlock-message">New Level Unlocked!</div>
+                </div>
+                <button id="nextLevelBtn" class="menu-button">Next Level</button>
+                <button id="replayLevelBtn" class="menu-button">Replay Level</button>
+            </div>
+        </div>
+
+        <div id="confetti"></div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="tapSound" src="./sounds/tap.wav" preload="auto"></audio>
+    <audio id="celebrationSound" src="./sounds/win.wav" preload="auto"></audio>
+    <audio id="gameCompleteSound" src="./sounds/win.wav" preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+</html> 
